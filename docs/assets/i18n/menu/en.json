@@ -1,0 +1,13 @@
+{
+  "DASHBOARD": "Home",
+  "FUNCIONALIDADES": "Features",
+  "UIFEATURES": "UI Features",
+  "UISHOWCASE": "ShowCase",
+  "UIFORMS": "Forms",
+  "CADASTROS": "Registration",
+  "LIVRO": "Book",
+  "MENU_HEADER": {
+    "PERFIL": "Profile",
+    "SAIR": "Log out"
+  }
+}

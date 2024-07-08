@@ -1,0 +1,14 @@
+{
+  "TITULO_PESQUISA": "Book",
+  "TITULO_EDITAR": "Edit Book",
+  "TITULO_INCLUIR": "Include Book",
+  "LBL_LIVRO": "Book",
+  "LBL_TITULO": "Title",
+  "LBL_ISBN": "ISBN",
+  "LBL_GENERO": "Genre",
+  "LBL_EDITORA": "Publisher",
+  "VALIDACAO": {
+    "CAMPO_LIVRO_OBRIGATORIO": "Book title must be completed",
+    "CAMPO_LIVRO_TAMANHO": "Title field cannot be less than 3"
+  }
+}

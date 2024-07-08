@@ -1,0 +1,20 @@
+{
+  "TITULO": "Consulta Cobrança",
+  "TITULO_INDICACAO_BOLSISTA": "Indicação de Bolsista",
+  "LBL_FILTRO_BUSCA": "Filtros para busca",
+  "LBL_INFO_INICIO_PROTOCOLO": "Data início de emissão do protocolo",
+  "LBL_DT_INICIO_PROTOCOLO": "Data Início Protocolo",
+  "LBL_INFO_FIM_PROTOCOLO": "Data fim de emissão do protocolo",
+  "LBL_DT_FIM_PROTOCOLO": "Data Fim Protocolo",
+  "LBL_DT_INICIO_PGTO": "Data Início Pagamento",
+  "LBL_DT_FIM_PGTO": "Data Fim Pagamento",
+  "LBL_RELATORIO": "Relatório",
+  "LBL_PROTOCOLO": "Protocolo",
+  "LBL_DT_INICIO_VCTO": "Data Início de Vencimento",
+  "LBL_DT_FIM_VCTO": "Data Fim de Vencimento",
+  "LBL_CNPJ": "CNPJ",
+  "LBL_ST_BOLETO": "Situação do Boleto",
+  "LBL_ST_PGTO": "Situação do Pagamento",
+  "LBL_ST_RELATORIO": "Situação do Relatório",
+  "LBL_ESTADO": "Estado"
+}
