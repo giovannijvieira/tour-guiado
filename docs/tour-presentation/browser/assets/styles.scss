@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+
+// themes - our custom or/and out of the box themes
+@import 'themes';
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+@import './pace.theme';
+@import './prism.theme';
+@import './layout';
+@import './overrides';
+@import './acessibilidade';
+
+// install the framework and custom global styles
+@include nb-install() {
+  @include nb-theme-global();
+  @include ngx-layout();
+  @include ngx-pace-theme();
+  @include nb-overrides();
+};

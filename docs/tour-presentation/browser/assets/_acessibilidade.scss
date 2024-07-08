@@ -1,0 +1,321 @@
+/**
+ * Regras de Acessibilidade.
+ **/
+ .nb-theme-dark,
+ .nb-theme-dark nav,
+ .nb-theme-dark li,
+ .nb-theme-dark ol,
+ .nb-theme-dark header,
+ .nb-theme-dark footer,
+ .nb-theme-dark table,
+ .nb-theme-dark caption,
+ .nb-theme-dark thead,
+ .nb-theme-dark tbody,
+ .nb-theme-dark tfoot,
+ .nb-theme-dark tr,
+ .nb-theme-dark th,
+ .nb-theme-dark section,
+ .nb-theme-dark main,
+ .nb-theme-dark aside,
+ .nb-theme-dark article,
+ .nb-theme-dark .ui-inputtext,
+ .nb-theme-dark .ui-dropdown,
+ .nb-theme-dark p-accordion *,
+ .nb-theme-dark .ui-dropdown .ui-dropdown-trigger,
+ .nb-theme-dark .ui-fieldset .ui-fieldset-legend a,
+ .nb-theme-dark .ui-inputgroup .ui-inputgroup-addon,
+ .nb-theme-dark .ui-dialog .ui-dialog-titlebar,
+ .nb-theme-dark .ui-dialog .ui-dialog-content,
+ .nb-theme-dark .ui-dialog .ui-dialog-footer,
+ .nb-theme-dark .ui-multiselect,
+ .nb-theme-dark .ui-table *,
+ .nb-theme-dark .ui-multiselect-panel .ui-multiselect-header,
+ .nb-theme-dark .ui-multiselect .ui-multiselect-trigger,
+ .nb-theme-dark pre[class*="language-"],
+ .nb-theme-dark .ui-fileupload .ui-fileupload-buttonbar,
+ .nb-theme-dark .ui-fileupload .ui-fileupload-content,
+ .nb-theme-dark .ui-fileupload .ui-fileupload-content *,
+ .nb-theme-dark nb-accordion-item.expanded .item-body,
+ .nb-theme-dark .ui-datepicker,
+ .nb-theme-dark .ui-accordion-content.ui-widget-content,
+ .nb-theme-dark .ui-panel *,
+ .nb-theme-dark .ui-selectbutton .ui-button,
+ .nb-theme-dark .checkbox-group,
+ .nb-theme-dark input.ui-state-disabled,
+ .nb-theme-dark input.ui-widget:disabled,
+ .nb-theme-dark input.form-control-plaintext.ui-state-disabled,
+ .nb-theme-dark input.form-control-plaintext.ui-widget:disabled,
+ .nb-theme-dark .ui-datepicker .ui-datepicker-header,
+ .nb-theme-dark #barra-brasil {
+     background: black !important;
+     color: white !important;
+ }
+
+ .nb-theme-dark h1,
+ .nb-theme-dark h2,
+ .nb-theme-dark h3,
+ .nb-theme-dark h4,
+ .nb-theme-dark h5,
+ .nb-theme-dark h6,
+ .nb-theme-dark p,
+ .nb-theme-dark label,
+ .nb-theme-dark strong,
+ .nb-theme-dark em,
+ .nb-theme-dark cite,
+ .nb-theme-dark q,
+ .nb-theme-dark i,
+ .nb-theme-dark b,
+ .nb-theme-dark u,
+ .nb-theme-dark span {
+     color: white !important;
+ }
+
+ .nb-theme-dark button,
+ .nb-theme-dark input[type=button],
+ .nb-theme-dark input[type=reset],
+ .nb-theme-dark input[type=submit] {
+     background: black !important;
+     color: yellow !important;
+     border-color: #fff !important;
+ }
+
+ .nb-theme-dark input[type=text],
+ .nb-theme-dark input[type=password],
+ .nb-theme-dark input[type=url],
+ .nb-theme-dark input[type=search],
+ .nb-theme-dark input[type=email],
+ .nb-theme-dark input[type=tel],
+ .nb-theme-dark input[type=date],
+ .nb-theme-dark input[type=month],
+ .nb-theme-dark input[type=week],
+ .nb-theme-dark input[type=datetime],
+ .nb-theme-dark input[type=datetime-local],
+ .nb-theme-dark input[type=number]
+ .nb-theme-dark textarea,
+ .nb-theme-dark select {
+     background: black !important;
+     /*border: 1px solid white !important;*/
+     color: white !important;
+ }
+
+.nb-theme-dark .ui-inputswitch .ui-inputswitch-slider {
+  background: white !important;
+}
+.nb-theme-dark .ui-inputswitch .ui-inputswitch-slider:before {
+  background: #000 !important;
+}
+
+.nb-theme-dark .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider {
+  background: #00e8ff !important;
+}
+
+.nb-theme-dark nb-menu .menu-item > .menu-items > .menu-item a.active, .nb-theme-dark nb-menu .menu-item > .menu-items > .menu-item a.active span {
+  color: #3398ff !important;
+}
+
+.nb-theme-dark input.form-control-plaintext.ui-state-disabled,
+.nb-theme-dark input.form-control-plaintext.ui-widget:disabled,
+.nb-theme-dark input.ui-state-disabled,
+.nb-theme-dark input.ui-widget:disabled {
+  border: 1px solid #424242 !important;
+  color: #a2a2a2 !important;
+}
+
+ .nb-theme-cnpq nb-action nb-icon {
+  color: white !important;
+}
+
+.nb-theme-cnpq nb-action, .nb-theme-dark .header-container nb-actions nb-action {
+ border-left: 0 !important;
+}
+
+.nb-theme-dark .ui-message.ui-message-warn {
+  background: #000;
+  border: 1px solid #ffe600;
+}
+
+.nb-theme-dark .ui-chkbox .ui-chkbox-box,
+.nb-theme-dark .ui-radiobutton .ui-radiobutton-box {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+.nb-theme-dark .ui-chkbox .ui-chkbox-box.ui-state-active,
+.nb-theme-dark .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover {
+  background: #fff !important;
+  border-color: #fff !important;
+}
+.nb-theme-dark .ui-chkbox .ui-chkbox-box .ui-chkbox-icon {
+  color: #000 !important;
+}
+
+.nb-theme-dark nb-card nb-card-header {
+  background: #000000 !important;
+  border-bottom: 1px solid #cad4e0 !important;
+  border-radius: 7px 7px 0 0;
+}
+
+ body.nb-theme-dark nb-card {
+  border:1px solid white !important;
+}
+
+ .nb-theme-cnpq nb-action nb-icon {
+   color: white !important;
+ }
+
+ .nb-theme-cnpq nb-action, .nb-theme-dark .header-container nb-actions nb-action {
+  border-left: 0 !important;
+}
+
+ .nb-theme-dark img.on-contrast-force-gray {
+  filter: grayscale(100%) contrast(120%);
+}
+
+.nb-theme-dark img.on-contrast-force-white {
+  filter: brightness(0) invert(1);
+}
+
+.nb-theme-dark a,
+.nb-theme-dark a:hover {
+  text-decoration: underline!important;
+}
+
+body .ui-datepicker:not(.ui-state-disabled) table td a:not(.ui-state-active):not(.ui-state-highlight):hover {
+  background-color: #eaeaea;
+  color: #808080;
+}
+
+ // primeNG
+ .nb-theme-dark .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+   background-color: black !important;
+ }
+
+ .nb-theme-cnpq nb-sidebar.compacted nb-menu .menu-items>.menu-item.menu-group, .nb-theme-dark nb-sidebar.compacted nb-menu .menu-items>.menu-item.menu-group {
+  display: none !important;
+}
+
+ .nb-theme-cnpq nb-menu .menu-item .menu-icon, .nb-theme-dark nb-menu .menu-item .menu-icon {
+  margin: 0 !important;
+}
+
+ .nb-theme-cnpq .menu-item a .menu-title, .nb-theme-dark .menu-item a .menu-title {
+  margin: 0 0 0 0.5rem;
+}
+
+.nb-theme-cnpq nb-user .user-picture, .nb-theme-dark .user-container .user-picture {
+  border: 0px !important;
+  border-width: 0px !important;
+}
+
+.nb-theme-dark nb-tooltip.ng-star-inserted span,
+.nb-theme-dark nb-tooltip span.ng-star-inserted {
+  color: #000000 !important;
+}
+
+.nb-theme-dark nb-tooltip[class*="status"] span {
+  color: #ffffff !important;
+}
+
+.nb-theme-dark .ui-button.ui-state-default.ui-button-success, .nb-theme-dark .ui-buttonset.ui-button-success > .ui-button.ui-state-default {
+  border-color: #09ff00 !important;
+}
+
+.nb-theme-dark .ui-button.ui-state-default.ui-button-warning, .nb-theme-dark .ui-buttonset.ui-button-warning > .ui-button.ui-state-default {
+  border-color: #edff00 !important;
+}
+
+.nb-theme-dark .ui-button.ui-state-default.ui-button-danger, .nb-theme-dark .ui-buttonset.ui-button-danger > .ui-button.ui-state-default {
+  border-color: red !important;
+}
+
+.nb-theme-dark fieldset {
+  border-color: #333333 !important;
+}
+
+.nb-theme-dark .ui-multiselect .ui-multiselect-trigger {
+  background-color: transparent !important;
+}
+
+nb-tab.content-active {
+  display: table !important;
+  width: 100%;
+}
+
+body.nb-theme-dark nb-stepper .header .connector {
+  background: #ccc !important;
+}
+
+.p-sm-1, .p-sm-2, .p-sm-3, .p-sm-4, .p-sm-5, .p-sm-6, .p-sm-7, .p-sm-8, .p-sm-9, .p-sm-10, .p-sm-11, .p-sm-12, .p-md-1, .p-md-2, .p-md-3, .p-md-4, .p-md-5, .p-md-6, .p-md-7, .p-md-8, .p-md-9, .p-md-10, .p-md-11, .p-md-12, .p-lg-1, .p-lg-2, .p-lg-3, .p-lg-4, .p-lg-5, .p-lg-6, .p-lg-7, .p-lg-8, .p-lg-9, .p-lg-10, .p-lg-11, .p-lg-12, .p-xl-1, .p-xl-2, .p-xl-3, .p-xl-4, .p-xl-5, .p-xl-6, .p-xl-7, .p-xl-8, .p-xl-9, .p-xl-10, .p-xl-11, .p-xl-12 {
+  padding: 0.5rem !important;
+}
+
+ @media screen and (max-width: 1190px) {
+
+  a.logo, .nb-theme-dark a.logo {
+    font-size: 1.5em !important;
+  }
+  .ui-breadcrumb {
+    top: -10px;
+    left: 0;
+  }
+  p-table.acction th:last-child, p-table.acction td:last-child {
+    width: 10%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  a.logo, .nb-theme-dark a.logo {
+    font-size: 0.9rem !important;
+  }
+
+  .nb-theme-cnpq nb-stepper.horizontal .header .step {
+    margin: 0 !important;
+  }
+
+  .ng-trigger.ng-trigger-overlayAnimation.ui-widget.ui-widget-content.ui-corner-all.ui-shadow.ng-star-inserted {
+    left: -26px !important;
+  }
+
+  nb-tabset .tab-link, nb-route-tabset .tab-link {
+    padding: 1.5rem 1rem !important;
+  }
+  nb-route-tabset .route-tabset {
+    padding: 0 1.2em;
+  }
+  .ui-breadcrumb {
+    top: 0;
+    left: 0;
+  }
+  p-checkbox {
+    display: table !important;
+    margin: 7px 1px;
+  }
+  .ui-inputgroup-addon p-checkbox {
+    margin: 0;
+  }
+}
+
+/* Versão*/
+body.nb-theme-dark nb-sidebar nb-menu {
+  height: calc(100% - 27px);
+  display: block;
+  overflow: inherit;
+}
+
+body.nb-theme-dark cnpq-versao {
+  border-top: 1px solid #cad4e0 !important;
+  position: absolute;
+  bottom: 0;
+  padding: 14px 0;
+  text-align: center;
+  width: 100%;
+  background: #000000 !important;
+  left: 0;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+body.nb-theme-dark nb-layout-footer nav {
+  padding: 9px 11px 7px 11px !important;
+}
