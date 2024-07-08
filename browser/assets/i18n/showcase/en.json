@@ -1,0 +1,20 @@
+{
+  "TITULO": "Search charges",
+  "TITULO_INDICACAO_BOLSISTA": "Indicação de Bolsista",
+  "LBL_FILTRO_BUSCA": "Search Filters",
+  "LBL_INFO_INICIO_PROTOCOLO": "Protocol start date",
+  "LBL_DT_INICIO_PROTOCOLO": "Date Start Protocol",
+  "LBL_INFO_FIM_PROTOCOLO": "Protocol end date",
+  "LBL_DT_FIM_PROTOCOLO": "Protocol end date",
+  "LBL_DT_INICIO_PGTO": "Date Start Payment",
+  "LBL_DT_FIM_PGTO": "End Date Payment",
+  "LBL_RELATORIO": "Report",
+  "LBL_PROTOCOLO": "Protocol",
+  "LBL_DT_INICIO_VCTO": "Expiration Start Date",
+  "LBL_DT_FIM_VCTO": "Expiration Date",
+  "LBL_CNPJ": "CNPJ",
+  "LBL_ST_BOLETO": "Debt Status",
+  "LBL_ST_PGTO": "Payment Status",
+  "LBL_ST_RELATORIO": "Report Status",
+  "LBL_ESTADO": "State"
+}

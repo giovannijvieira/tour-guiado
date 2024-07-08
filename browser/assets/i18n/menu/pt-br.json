@@ -1,0 +1,14 @@
+{
+  "TESTE": "Teste",
+  "DASHBOARD": "Ínicio",
+  "FUNCIONALIDADES": "Funcionalidades",
+  "UIFEATURES": "UI Features",
+  "UISHOWCASE": "ShowCase",
+  "UIFORMS": "Formulários",
+  "CADASTROS": "Cadastros",
+  "LIVRO": "Livro",
+  "MENU_HEADER": {
+    "PERFIL": "Perfil",
+    "SAIR": "Sair"
+  }
+}
