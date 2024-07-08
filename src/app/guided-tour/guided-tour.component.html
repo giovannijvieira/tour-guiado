@@ -1,0 +1,669 @@
+<!--<div *ngIf="isTourActive" class="overlay-svg">-->
+<!--  <svg width="100%" height="100%" style="position:fixed; top: 0; left: 0; z-index: 1040;">-->
+<!--    <defs>-->
+<!--      <mask id="mask" x="0" y="0" width="100%" height="100%"  >-->
+<!--        <rect x="0" y="0" width="100%" height="100%" fill="white"/>-->
+<!--        &lt;!&ndash; Rectângulo de recorte customizado &ndash;&gt;-->
+<!--        <rect [attr.x]="customHighlightPosition.x" [attr.y]="customHighlightPosition.y"-->
+<!--              [attr.width]="customHighlightPosition.width" [attr.height]="customHighlightPosition.height" fill="black"/>-->
+<!--      </mask>-->
+<!--    </defs>-->
+<!--    <rect x="0" y="0" width="100%" height="100%" fill="rgba(0,0,0,0.85)" mask="url(#mask)"/>-->
+<!--  </svg>-->
+<!--</div>-->
+<!--<button (click)="startTour()" class="btn btn-icon btn-info">&ndash;&gt;-->
+<!--  <i class="fas fa-toggle-on"></i>&ndash;&gt;-->
+<!--</button>-->
+<div class="overlay" *ngIf="isTourActive" tabindex="-1"></div>
+<div class="card-tour-recorte step-custom" *ngIf="isTourActive && currentStepIndex === 0" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p class="visually-hidden" role="alert" aria-live="assertive">
+    No módulo utilize a tecla tab para acesso ao pontos de interação, para
+    avançar utilize a tecla enter, para retroceder a tecla backspace e para
+    fechar o módulo a tecla esc do seu teclado. Desejamos uma boa experiência!
+  </p>
+  <br />
+  <p>
+    Caso seja o seu primeiro acesso ao Assistente de Importação, você
+    necessitará incluir o seu identificador ORCID.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <button class="close-tour-button" (click)="closeTour()" aria-label="Fechar Tour" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="tour-navigation">
+    <button class="nav-button next" (click)="nextStep()" aria-label="Próxima Etapa" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="simulated-button-container">
+    <button class="simulated-button" (click)="$event.preventDefault()" aria-label="Incluir Identificador" tabindex="-1">
+      <i class="fas fa-plus" aria-hidden="true"></i> Incluir Identificador
+    </button>
+  </div>
+</div>
+<div class="card-tour-recorte step-custom" *ngIf="isTourActive && currentStepIndex === 1" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <p>Selecionar a fonte de importação “ORCID” e clique em “Conectar”.</p>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="br-select">
+    <div class="br-input">
+      <label for="select-simple">Fonte</label>
+      <input id="select-simple" type="text" placeholder="ORCID" readonly aria-label="Selecione a fonte de importação"
+             tabindex="-1" />
+      <i class="fas fa-chevron-down select-icon" aria-hidden="true"></i>
+    </div>
+  </div>
+  <br />
+  <div class="simulated-button-container-seccond">
+    <button class="simulated-button" (click)="$event.preventDefault()" aria-label="Conectar" tabindex="0">
+      Conectar
+    </button>
+  </div>
+</div>
+<div class="card-tour-recorte step-custom" *ngIf="isTourActive && currentStepIndex === 2" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Você será redirecionado para o site do <b>ORCID</b> para realizar a sua
+    autorização de acesso, liberando assim o
+    <b>Módulo de Assistente de Importação do Lattes</b> ao conteúdo do
+    <b>ORCID.</b>
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="svg-container" aria-hidden="true" tabindex="-1">
+    <svg class="progress-circle" width="100" height="100">
+      <circle class="progress-circle-back" cx="50" cy="50" r="45" fill="none" stroke="#eee" stroke-width="5" />
+      <circle class="progress-circle-front" cx="50" cy="50" r="45" fill="none" stroke="#1351b4" stroke-width="5"
+              stroke-dasharray="283" stroke-dashoffset="75" />
+    </svg>
+  </div>
+</div>
+<div class="card-tour-recorte step-seven" *ngIf="isTourActive && currentStepIndex === 3" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>Autenticar-se no ORCID</p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="signin-simulation" tabindex="-1">
+    <img src="../../../assets/images/tour/orcid-signin.png" alt="Simulação da página de autenticação do ORCID"
+         aria-label="Tela de login ORCID" />
+  </div>
+</div>
+<div class="card-tour-recorte step-six" *ngIf="isTourActive && currentStepIndex === 4" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Após autenticar no sistema ORCID, será apresentada mensagem de confirmação
+    de sincronização:
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="modal-simulation" tabindex="-1">
+    <p><b>Confirmação</b></p>
+    <p>
+      Deseja sincronizar as produções?<br />
+      OBS: Serão sincronizadas apenas as produções com visibilidade 'PÚBLICA' no
+      ORCID
+    </p>
+    <div class="modal-buttons" role="group" aria-label="Opções de Confirmação">
+      <button class="modal-button no" aria-label="Não" tabindex="-1">
+        NÃO
+      </button>
+      <button class="modal-button yes" aria-label="Sim" tabindex="-1">
+        SIM
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card-tour centered-card" *ngIf="isTourActive && currentStepIndex === 5" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    ATENÇÃO:<i class="fas fa-triangle-exclamation" aria-hidden="true"></i><br />O sistema só realiza sincronização das
+    produções configuradas no
+    ORCID com visibilidade “Pública”. As produções com outros status não serão
+    sincronizadas.
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-unstyled" aria-label="Parte 1 da lista de tipos de produções aceitas">
+          <li>Livro</li>
+          <li>Capítulo de Livro</li>
+          <li>Revisão do Livro</li>
+          <li>Entrada de Dicionário</li>
+          <li>Dissertação</li>
+          <li>Tese de Dissertação</li>
+          <li>Entrada de Enciclopédia</li>
+          <li>Livro Editado</li>
+          <li>Artigo de Jornal</li>
+          <li>Edição de Jornal</li>
+          <li>Artigo de Revista</li>
+          <li>Manual</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-unstyled" aria-label="Parte 2 da lista de tipos de produções aceitas">
+          <li>Recurso Online</li>
+          <li>Artigo de Boletim Informativo</li>
+          <li>Artigo de Jornal - Newsletter</li>
+          <li>Pré-impressão</li>
+          <li>Relatório</li>
+          <li>Ferramenta de Pesquisa</li>
+          <li>Publicação Aluno Supervisionada</li>
+          <li>Tradução</li>
+          <li>Website</li>
+          <li>Documento de Trabalho</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<div class="card-tour-recorte step-six" *ngIf="isTourActive && currentStepIndex === 6" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Ao confirmar a mensagem de sincronização, o sistema realiza a leitura na
+    base do ORCID e apresenta todas as produções que podem ser importadas.
+  </p>
+  <img src="../../../assets/images/tour/menu-production.png" alt="menu-produção" class="card-image"
+       aria-label="Imagem do menu de produção" />
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<div class="card-tour-recorte card-table" *ngIf="isTourActive && currentStepIndex === 7" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Ao sincronizar com o ORCID, o sistema apresenta as produções na tela
+    ”Produções”.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<div class="tabela-image-container" *ngIf="isTourActive && currentStepIndex === 7" tabindex="0">
+  <img src="../../../assets/images/tour/table.png" alt="tabela-modelo" class="tabela-image"
+       aria-label="Imagem da tabela modelo" />
+</div>
+<div class="card-tour-recorte step-custom" *ngIf="isTourActive && currentStepIndex === 8" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Selecione as produções que deseja importar para a base do Lattes e clique no
+    botão “Importar”
+  </p>
+  <br />
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="simulated-button-container">
+    <button class="simulated-button" aria-label="Botão importar" tabindex="-1" (click)="$event.preventDefault()">
+      Importar
+    </button>
+  </div>
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 9" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-pause icon-adicionar" aria-hidden="true"></i><b>Lido na Origem</b>
+  </p>
+  <p>
+    Os dados foram recuperados da origem e aguardam sua confirmação para o
+    processo de importação.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/lido.png" alt="lido-na-fonte" class="card-image-status"
+       aria-label="Importação lido na fonte" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 10" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-check-circle icon-importado"></i><b>Importação realizada com sucesso!</b>
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/sucesso.png" alt="sucesso" class="card-image-status"
+       aria-label="Importação com sucesso" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 11" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-times-circle icon-falha" aria-hidden="true"></i><b>Importação com falha!</b>
+  </p>
+  <p class="text-falha">
+    Possíveis motivos:<br />
+    <li>
+      Uso de data futura na produção. Realize a atualização da data no sistema
+      de origem e faça uma nova importação;
+    </li>
+    <li>
+      Na lista de autores recuperados a partir do DOI fornecido na Origem, não
+      foi encontrado o seu nome em citações bibliográficas registradas no
+      Lattes. Procure os canais de atendimento do CNPq.
+    </li>
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/fl.png" alt="falha" class="card-image-status"
+       aria-label="Imagem de importação com falha" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 12" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-sync icon-modificado" aria-hidden="true"></i><b>Modificado na Origem</b>
+  </p>
+  <p>
+    Os dados foram alterados na Origem(Orcid). Caso deseje aplicar as alterações no Lattes, importe o artigo novamente.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/mod.png" alt="modificado" class="card-image-status"
+       aria-label="Importação modificado na fonte" />
+</div>
+
+
+
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 13" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="del-font-left-legend" aria-hidden="true"></i><b>Excluído na origem</b>
+  </p>
+  <p>
+    Os dados foram excluídos da origem (Orcid). Para processar a exclusão desta produção também no Currículo Lattes clique na ação 'Excluir no Lattes' disponível na coluna <b>'Ações'.</b>
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/excori.png" alt="excluída origem" class="card-image-status"
+       aria-label="Excluído na origem" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 14" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="del-font-legend" aria-hidden="true"></i><b>Excluído no destino</b>
+  </p>
+  <p>
+    A produção foi excluída no destino (Lattes). É possível importá-la novamente.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/excdest.png" alt="excluída no destino" class="card-image-status"
+       aria-label="Produção Excluída no destino" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 15" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-equals icon-dup-label" aria-hidden="true"></i><b>Duplicado na origem</b>
+  </p>
+  <p>
+    Os dados estão duplicados na Origem(Orcid).
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/dupli.png" alt="duplicada" class="card-image-status"
+       aria-label="Produção duplicada na origem" />
+</div>
+<div class="card-tour-recorte step-custom-status" *ngIf="isTourActive && currentStepIndex === 16" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Na tela de Produções, o sistema apresenta na coluna "Situação" o status
+    sobre cada produção:
+  </p>
+  <p>
+    <i class="fas fa-triangle-exclamation icon-inconsistencia" aria-hidden="true"></i><b>Inconsistência</b>
+  </p>
+  <p>
+    A operação de importação não pode ser realizada devido a ausência de campos
+    obrigatórios.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/inc.png" alt="inconsistência" class="card-image-status"
+       aria-label="Importação com inconsistência" />
+</div>
+<div class="card-tour-recorte step-custom" *ngIf="isTourActive && currentStepIndex === 17" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    Ao clicar no ícone de “Complemento de Informações”, é possível incluir as
+    informações nos campos obrigatórios.
+  </p>
+  <p>
+    <i class="fas fa-pen-to-square icon-modificado" aria-hidden="true"></i><b>Complemento de informações</b>
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <img src="../../../assets/images/tour/edit.png" alt="edição" class="card-image-edit"
+       aria-label="Imagem icone edição" />
+</div>
+<div class="card-tour-recorte step-custom-two" *ngIf="isTourActive && currentStepIndex === 18" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    É possível preencher os campos obrigatórios no formulário para cada tipo de
+    produção, em seguida clicar no botão importar para realizar nova importação.
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div id="idVolEdiPag" class="row">
+    <div class="col-md-4 input-validation-container">
+      <label for="volume">Volume</label>
+      <input id="volume" type="text" maxlength="6" class="form-control campo-obrigatorio" tabindex="-1" readonly
+             aria-labelledby="campo volume" aria-readonly="true" aria-required="true" />
+      <div class="validation-message" aria-hidden="true">
+        <i class="fas fa-info-circle" aria-hidden="true"></i> Obrigatório
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="label-with-icon-wrapper">
+        <label for="edicao">Edição</label>
+      </div>
+      <input id="edicao" type="text" maxlength="3" class="form-control campo-obrigatorio" tabindex="-1" readonly
+             aria-labelledby="campo edicao" aria-readonly="true" aria-required="true" />
+      <div class="validation-message" aria-hidden="true">
+        <i class="fas fa-info-circle" aria-hidden="true"></i> Obrigatório
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="nroPagina" style="text-align: left!important;">Página inicial</label>
+      <input id="nroPagina" type="text" [min]="1" [max]="5000" maxlength="15" class="form-control campo-obrigatorio"
+             tabindex="-1" readonly aria-labelledby="Campo número Página" aria-readonly="true" aria-required="true" />
+      <div class="validation-message" aria-hidden="true">
+        <i class="fas fa-info-circle" aria-hidden="true"></i> Obrigatório
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label for="issn">ISSN/ISBN</label>
+      <input id="issn" type="text" maxlength="13" class="form-control campo-obrigatorio" tabindex="-1" readonly
+             aria-labelledby="Campo issn" aria-readonly="true" aria-required="true" />
+      <div class="validation-message" aria-hidden="true">
+        <i class="fas fa-info-circle" aria-hidden="true"></i> Campo obrigatório
+      </div>
+    </div>
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+  <div class="simulated-button-container-third" >
+    <button class="simulated-button" aria-label="Botão importar" tabindex="-1" (click)="$event.preventDefault()">
+      Importar
+    </button>
+  </div>
+</div>
+<div class="card-tour centered-card-final" *ngIf="isTourActive && currentStepIndex === 19" tabindex="0">
+  <p><b>Tour guiado</b></p>
+  <p>
+    <b>ATENÇÃO!<br /><br /></b>
+    <i class="fas fa-triangle-exclamation icon-inconsistencia" aria-hidden="true"></i>
+    Depois de importar as produções no Currículo Lattes, elas não estarão
+    imediatamente disponíveis no seu currículo público. Para torná-las disponíveis, enviar as alterações utilizando o botão "Enviar".
+  </p>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <div class="tour-navigation">
+    <button class="nav-button prev" aria-label="Passo Anterior" (click)="previousStep()" tabindex="0">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="nav-button next" aria-label="Próximo Passo" (click)="nextStep()" tabindex="0">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<div class="card-tour centered-card-final" *ngIf="isTourActive && currentStepIndex === 20" tabindex="0">
+  <div class="text-container">
+    <p>
+      <b>Concluímos o tour guiado.</b><br /><br /><br /><i class="fas fa-check-circle icon-importado" aria-hidden="true"></i>
+      Você já está apto a iniciar a operação do Assistente de importação.
+    </p>
+  </div>
+  <div class="step-info" aria-live="polite">
+    {{ currentStepIndex + 1 }} de {{ steps.length }}
+  </div>
+  <button class="close-tour-button" aria-label="Fechar Tour" (click)="closeTour()" tabindex="0">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
+</div>

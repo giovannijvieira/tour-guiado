@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { GuidedTourComponent } from './guided-tour/guided-tour.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [GuidedTourComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'tour-presentation';
+
+  @ViewChild(GuidedTourComponent) guidedTourComponent!: GuidedTourComponent;
+
+  startTour() {
+    if (this.guidedTourComponent) {
+      this.guidedTourComponent.startTour();
+    }
+  }
 }

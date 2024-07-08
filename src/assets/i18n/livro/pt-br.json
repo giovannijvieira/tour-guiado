@@ -1,0 +1,14 @@
+{
+  "TITULO_PESQUISA": "Livro",
+  "TITULO_EDITAR": "Alterar Livro",
+  "TITULO_INCLUIR": "Incluir Livro",
+  "LBL_LIVRO": "Livro",
+  "LBL_TITULO": "Título",
+  "LBL_ISBN": "ISBN",
+  "LBL_GENERO": "Gênero",
+  "LBL_EDITORA": "Editora",
+  "VALIDACAO": {
+    "CAMPO_LIVRO_OBRIGATORIO": "O titulo do livro deve ser preenchido",
+    "CAMPO_LIVRO_TAMANHO": "O campo titulo não pode ser menor que 3"
+  }
+}
