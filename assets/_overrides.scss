@@ -1,0 +1,50 @@
+@import './themes';
+
+@mixin nb-overrides() {
+  nb-select.size-medium button {
+    padding: 0.4375rem 2.2rem 0.4375rem 1.125rem !important;
+
+    nb-icon {
+      right: 0.41rem !important;
+    }
+  }
+
+  nb-checkbox {
+    margin-bottom: 1rem;
+  }
+
+  nb-card.inline-form-card nb-card-body {
+    padding-bottom: 0;
+  }
+
+  nb-card-body {
+    > * {
+      margin-top: 1rem;
+    }
+  }
+
+
+  button[nbButton] {
+    margin: 0.5rem;
+  }
+
+  .form-inline [fullWidth] {
+    flex: 1;
+  }
+
+  .form-inline > * {
+    margin: 0 1.5rem 1.5rem 0;
+  }
+
+  .checkbox-radio {
+    display: flex;
+  }
+
+  .ui-button {
+    margin-left: 5px !important;
+  }
+}
+
+nb-card-body > * {
+  padding-bottom: 1rem;
+}
